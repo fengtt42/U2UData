@@ -162,9 +162,9 @@ The evaluation results  will be dumped in the model directory.
 @inproceedings{feng2024u2udata,
   title={U2UData: A Large-scale Cooperative Perception Dataset for Swarm UAVs Autonomous Flight},
   author={Feng, Tongtong and Wang, Xin and Han, Feilin and Zhang, Leping and Zhu, Wenwu},
-  journal={arXiv preprint arXiv:2408.00606},
+  booktitle={ACM Multimedia 2024},
   year={2024}
-  }
+}
 ```
 
 # Supported Projects
