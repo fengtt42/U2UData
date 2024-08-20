@@ -160,10 +160,10 @@ The evaluation results  will be dumped in the model directory.
  If you are using our OpenCOOD framework or OPV2V dataset for your research, please cite the following paper:
  ```bibtex
 @inproceedings{feng2024u2udata,
-  author = {Tongtong Feng, Xin Wang, Feilin Han, Leping Zhang, Wenwu Zhu},
-  title = {U2UData: A Large-scale Cooperative Perception Dataset for Swarm UAVs Autonomous Flight},
-  booktitle = {2024 The 32nd ACM Multimedia Conference (ACM MM)},
-  year = {2024}
+  title={U2UData: A Large-scale Cooperative Perception Dataset for Swarm UAVs Autonomous Flight},
+  author={Feng, Tongtong and Wang, Xin and Han, Feilin and Zhang, Leping and Zhu, Wenwu},
+  journal={arXiv preprint arXiv:2408.00606},
+  year={2024}
   }
 ```
 
