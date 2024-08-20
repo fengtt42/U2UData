@@ -67,8 +67,8 @@ unzip train.zip
 # Benchmark
 ### 3.1 Features
 - Provide easy data API for multiple popular multi-agent perception dataset:
-  - [x] [OPV2V [ICRA2022]](https://mobility-lab.seas.ucla.edu/opv2v/)
-  - [x] [V2XSet [ECCV2022]](https://arxiv.org/pdf/2203.10638.pdf)
+  - [ ] [OPV2V [ICRA2022]](https://mobility-lab.seas.ucla.edu/opv2v/)
+  - [ ] [V2XSet [ECCV2022]](https://arxiv.org/pdf/2203.10638.pdf)
   - [ ] [DAIR-V2X [CVPR2022]](https://arxiv.org/abs/2204.05575)
   - [x] [U2UData [ACMMM2024]](https://fengtongtong.github.io/static/files/publications_file/2024-MM.pdf)
 - Provide APIs to allow users use different sensor modalities
@@ -77,18 +77,18 @@ unzip train.zip
   - [ ] Radar APIs
 - Provide multiple SOTA 3D detection backbone:
     - [X] [PointPillar](https://arxiv.org/abs/1812.05784)
-    - [X] [Pixor](https://arxiv.org/abs/1902.06326)
-    - [X] [VoxelNet](https://arxiv.org/abs/1711.06396)
-    - [X] [SECOND](https://www.mdpi.com/1424-8220/18/10/3337)
+    - [ ] [Pixor](https://arxiv.org/abs/1902.06326)
+    - [ ] [VoxelNet](https://arxiv.org/abs/1711.06396)
+    - [ ] [SECOND](https://www.mdpi.com/1424-8220/18/10/3337)
 - Support multiple sparse convolution versions
   - [X] Spconv 1.2.1
-  - [X] Spconv 2.x
+  - [ ] Spconv 2.x
 - Support  SOTA multi-agent perception models:
     - [x] [No Fusion]()
     - [x] [Late Fusion](https://ieeexplore.ieee.org/document/8569832)
     - [x] [Early Fusion](https://arxiv.org/pdf/1905.05265)
     - [x] [When2Com [CVPR2020]](https://arxiv.org/pdf/2006.00176)
-    - [ ] [DiscoNet [NeurIPS2021]](https://arxiv.org/abs/2111.00643)
+    - [x] [DiscoNet [NeurIPS2021]](https://arxiv.org/abs/2111.00643)
     - [x] [V2VNet [ECCV2022]](https://arxiv.org/abs/2008.07519)
     - [x] [V2X-ViT [ECCV2022]](https://github.com/DerrickXuNu/v2x-vit)
     - [x] [CoBEVT [CoRL2022]](https://arxiv.org/abs/2207.02202)
