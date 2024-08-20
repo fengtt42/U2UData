@@ -2,11 +2,12 @@
   <img src="images/FIG0.png" width="500"/>
 
 </div>
+If you find this work useful or interesting, please kindly give us a star ⭐, thanks!😀
 
 [![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://fengtongtong.github.io/static/files/publications_file/2024-MM.pdf)
 [![Simulator: U2USim](https://img.shields.io/badge/Simulator-U2USim-blue)](https://drive.google.com/drive/folders/1yc4Oe0E2Qn-1I1_G3gBgoww3LAf7iyLg?usp=sharing) 
 [![Dataset: U2UData](https://img.shields.io/badge/Dataset-U2Udata-red)]()
-[![Benchmark: U2UData](https://img.shields.io/badge/Benchmark-U2Udata-yellow)](https://github.com/fengtt42/UAV_data)
+[![Benchmark: U2UData](https://img.shields.io/badge/Benchmark-U2Udata-yellow)](https://github.com/fengtt42/U2UData)
 
 <strong>U2U*</strong> is a cooperative perception simlator, dataset and benchmark for swarm UAVs autonomous flight. It is also the official implementation of the <strong> ACM MM 2024  </strong>
 paper [U2UData.](https://fengtongtong.github.io/static/files/publications_file/2024-MM.pdf)
@@ -23,7 +24,35 @@ Bottom right: Swarm UAVs cooperative perception benchmark.
 </div>
 
 # Simulator
-
+### 1.1 Downloading
+The simulator, config files, and control code can be downloaded from [google drive](https://drive.google.com/drive/folders/1yc4Oe0E2Qn-1I1_G3gBgoww3LAf7iyLg). 
+> In case you suffer from downloading large files, you can email me and I will send you the Baidu Cloud link to download.
+### 1.2 Quick Start
+Compiling tests passed on Ubuntu 20.04 with ros-noetic installed. You can just execute the following commands one by one.
+```shell
+# Download the Simulator and run it
+wget https://cloud.tsinghua.edu.cn/library/34e91522-1117-4021-874f-d40083dc90e0/Simulator/UAV_Bear_Simulator.zip
+uzip UAV_Bear_Simulator.zip
+cd ./UAV_Bear_Simulator
+mkdir ~/Documents/AirSim
+cp settings.json ~/Documents/AirSim
+./Landscape.sh
+# Play UAV using a keyboard
+sudo apt-get install ros-noetic-desktop-full
+sudo apt-get install ros-noetic-geographic-msgs, ros-noetic-tf2-geometry-msgs, ros-noetic-tf2-sensor-msgs, ros-noetic-image-transport
+sudo apt-get install python3-catkin-tools
+git clone https://github.com/THU-Swarm-Lab/SwarmSim.git
+cd SwarmSim/UAV_Bear_Alg
+catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
+source devel/setup.bash
+roslaunch kb_ctrl kb_ctrl.launch
+```
+### 1.3 Acknowledgements
+This work can extend to multi-sensor fusion, swarm navigation, and swarm tracking tasks.
+- ros-noetic
+- ubuntu20.04
+- NVIDIA RTX4090TI gpu (version：535.146.02)
+- INTEL I5 12th CPU
 
 ## Features
 - Provide easy data API for multiple popular multi-agent perception dataset:
