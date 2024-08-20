@@ -15,7 +15,7 @@ paper [U2UData.](https://fengtongtong.github.io/static/files/publications_file/2
 <div align="center">
 <img src="images/FIG1.png">
   <div></div>
-U2Udata is collected by performing swarm UAVs autonomous flight tasks in the U2USim environment. 
+U2UData is collected by performing swarm UAVs autonomous flight tasks in the U2USim environment. 
 Top left: Swarm UAVs autonomous flight task, where each UAV protects an animal based on the arrow. 
 Top right: First-person views and LiDAR images of each UAV. 
 Bottom left: U2USim, a real-world mapping swarm UAVs simulation environment. 
@@ -48,18 +48,29 @@ source devel/setup.bash
 roslaunch kb_ctrl kb_ctrl.launch
 ```
 ### 1.3 Acknowledgements
-This work can extend to multi-sensor fusion, swarm navigation, and swarm tracking tasks.
+This U2USim can extend to multi-sensor fusion, swarm navigation, and swarm tracking tasks.
 - ros-noetic
 - ubuntu20.04
 - NVIDIA RTX4090TI gpu (version：535.146.02)
 - INTEL I5 12th CPU
+> More details can be found in our paper.
 
-## Features
+# Dataset Downloading
+All the data can be downloaded from [google drive](https://drive.google.com/drive/folders/1yc4Oe0E2Qn-1I1_G3gBgoww3LAf7iyLg). If you have a good internet, you can directly
+download the complete large zip file such as `train.zip`. In case you suffer from downloading large files, we also split each data set into small chunks, which can be found 
+in the directory ending with `_chunks`, such as `train_chunks`. After downloading, please run the following command to each set to merge those chunks together:
+```python
+cat train.zip.part* > train.zip
+unzip train.zip
+```
+
+# Benchmark
+### 3.1 Features
 - Provide easy data API for multiple popular multi-agent perception dataset:
   - [x] [OPV2V [ICRA2022]](https://mobility-lab.seas.ucla.edu/opv2v/)
   - [x] [V2XSet [ECCV2022]](https://arxiv.org/pdf/2203.10638.pdf)
   - [ ] [DAIR-V2X [CVPR2022]](https://arxiv.org/abs/2204.05575)
-  - [ ] [V2V4Real [CVPR2023 Highlight]](https://arxiv.org/abs/2303.07601)
+  - [x] [U2UData [ACMMM2024]](https://fengtongtong.github.io/static/files/publications_file/2024-MM.pdf)
 - Provide APIs to allow users use different sensor modalities
   - [x] LiDAR APIs
   - [ ] Camera APIs
@@ -73,34 +84,20 @@ This work can extend to multi-sensor fusion, swarm navigation, and swarm trackin
   - [X] Spconv 1.2.1
   - [X] Spconv 2.x
 - Support  SOTA multi-agent perception models:
-    - [x] [Attentive Fusion [ICRA2022]](https://arxiv.org/abs/2109.07644)
-    - [x] [Cooper [ICDCS]](https://arxiv.org/abs/1905.05265)
-    - [x] [F-Cooper [SEC2019]](https://arxiv.org/abs/1909.06459)
-    - [x] [V2VNet [ECCV2022]](https://arxiv.org/abs/2008.07519)
-    - [x] [CoAlign (fusion only) [ICRA2023]](https://arxiv.org/abs/2211.07214)
-    - [x] [FPV-RCNN [RAL2022]](https://arxiv.org/pdf/2109.11615.pdf)
+    - [x] [No Fusion]()
+    - [x] [Late Fusion](https://ieeexplore.ieee.org/document/8569832)
+    - [x] [Early Fusion](https://arxiv.org/pdf/1905.05265)
+    - [x] [When2Com [CVPR2020]](https://arxiv.org/pdf/2006.00176)
     - [ ] [DiscoNet [NeurIPS2021]](https://arxiv.org/abs/2111.00643)
+    - [x] [V2VNet [ECCV2022]](https://arxiv.org/abs/2008.07519)
     - [x] [V2X-ViT [ECCV2022]](https://github.com/DerrickXuNu/v2x-vit)
-    - [x] [CoBEVT [CoRL2022]](https://arxiv.org/abs/2207.02202)  
-    - [ ] [AdaFusion [WACV2023]](https://arxiv.org/abs/2208.00116)  
+    - [x] [CoBEVT [CoRL2022]](https://arxiv.org/abs/2207.02202)
     - [x] [Where2comm [NeurIPS2022]](https://arxiv.org/abs/2209.12836)
-    - [x] [V2VAM [TIV2023]](https://arxiv.org/abs/2212.08273) 
 
-- **Provide a convenient log replay toolbox for OPV2V dataset.** Check [here](logreplay/README.md) to see more details.
-
-## Data Downloading
-All the data can be downloaded from [google drive](https://drive.google.com/drive/folders/1dkDeHlwOVbmgXcDazZvO6TFEZ6V_7WUu). If you have a good internet, you can directly
-download the complete large zip file such as `train.zip`. In case you suffer from downloading large files, we also split each data set into small chunks, which can be found 
-in the directory ending with `_chunks`, such as `train_chunks`. After downloading, please run the following command to each set to merge those chunks together:
-```python
-cat train.zip.part* > train.zip
-unzip train.zip
-```
-
-## Installation
+### 3.2 Installation
 Please refer to [data introduction](https://opencood.readthedocs.io/en/latest/md_files/data_intro.html)
 and [installation](https://opencood.readthedocs.io/en/latest/md_files/installation.html) guide to prepare
-data and install OpenCOOD. To see more details of OPV2V data, please check [our website.](https://mobility-lab.seas.ucla.edu/opv2v/)
+data and install. To see more details of [U2UData [ACMMM2024]](https://fengtongtong.github.io/static/files/publications_file/2024-MM.pdf), please check [our paper.](https://fengtongtong.github.io/static/files/publications_file/2024-MM.pdf)
 ```shell
 conda create -n opencood python=3.8
 conda activate opencood
@@ -111,12 +108,9 @@ pip install -r requirements.txt
 # install this project. It's OK if EasyInstallDeprecationWarning shows up.
 python setup.py develop
 ```
-在安装的过程中会报镜像错误，默认镜像和中科大的镜像都无法正常下载，可以安装清华镜像，并且增加pytorch镜像
-
-## Quick Start
-### Data sequence visualization
-To quickly visualize the LiDAR stream in the OPV2V dataset, first modify the `validate_dir`
-in your `opencood/hypes_yaml/visualization.yaml` to the opv2v data path on your local machine, e.g. `opv2v/validate`,
+### 3.3 Data sequence visualization
+To quickly visualize the LiDAR stream in the U2UData dataset, first modify the `validate_dir`
+in your `opencood/hypes_yaml/visualization.yaml` to the U2UData data path on your local machine, e.g. `opv2v/validate`,
 and the run the following commond:
 ```python
 cd ~/OpenCOOD
@@ -125,8 +119,7 @@ python opencood/visualization/vis_data_sequence.py [--color_mode ${COLOR_RENDERI
 Arguments Explanation:
 - `color_mode` : str type, indicating the lidar color rendering mode. You can choose from 'constant', 'intensity' or 'z-value'.
 
-
-### Train your model
+### 3.4 Train your model
 OpenCOOD uses yaml file to configure all the parameters for training. To train your own model
 from scratch or a continued checkpoint, run the following commonds:
 ```python
@@ -144,8 +137,7 @@ To train on **multiple gpus**, run the following command:
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4  --use_env opencood/tools/train.py --hypes_yaml ${CONFIG_FILE} [--model_dir  ${CHECKPOINT_FOLDER}]
 ```
 
-
-### Test the model
+### 3.5 Test the model
 Before you run the following command, first make sure the `validation_dir` in config.yaml under your checkpoint folder
 refers to the testing dataset path, e.g. `opv2v_data_dumping/test`.
 
@@ -161,96 +153,22 @@ Arguments Explanation:
 
 The evaluation results  will be dumped in the model directory. 
 
-## Benchmark and model zoo
-### Results on OPV2V LiDAR-track (AP@0.7 for no-compression/ compression)
+### 3.6 Benchmark result
+<font color=red>Results</font> on U2UData LiDAR-detection and LiDAR-track can be found in our paper. 
 
-|                    | Spconv Version| Backbone   | Fusion Strategy  | Bandwidth (Megabit), <br/> before/after compression| Default Towns    |Culver City| Download |
-|--------------------| -------|--------   | ---------------  | ---------------                | -------------    |-----------| -------- |
-| Naive Late         | 1.2.1 | PointPillar        | Late      |    **0.024**/**0.024** |   0.781/0.781        | 0.668/0.668         |    [url](https://drive.google.com/file/d/1WTKooW6k0exLqoIE5Czqy6ptycYlgKZz/view?usp=sharing)   |
-| [Cooper](https://arxiv.org/abs/1905.05265)   | 1.2.1     | PointPillar        | Early  |   7.68/7.68   | 0.800/x         | 0.696/x       | [url](https://drive.google.com/file/d/16hVkjpBUGfCByHjSmT8atCSZ2z2KuJBj/view?usp=share_link)     | 
-| [Attentive Fusion](https://arxiv.org/abs/2109.07644)  | 1.2.1        | PointPillar        | Intermediate  | 126.8/1.98   | 0.815/0.810       | 0.735/0.731        | [url](https://drive.google.com/file/d/11pG0kf2uR9N_o_ACBi_zfd7flGCgZt40/view?usp=sharing)     | 
-| [F-Cooper](https://arxiv.org/abs/1909.06459)   | 1.2.1       | PointPillar        | Intermediate  | 72.08/1.12    | 0.790/0.788     | 0.728/0.726        | [url](https://drive.google.com/file/d/1CjXu9Y2ZTzJA6Oo3hnqFhbTqBVKq3mQb/view?usp=sharing)     | 
-| [V2VNet](https://arxiv.org/abs/2008.07519)  | 1.2.1        | PointPillar        | Intermediate  | 72.08/1.12    | 0.822/0.814     | 0.734/0.729    | [url](https://drive.google.com/file/d/14xl_gNEIHcDw-SvQyO1ioQwyzGym-tKX/view?usp=sharing)     |
-| [CoAlign](https://arxiv.org/abs/2211.07214) | 1.2.1        | PointPillar        | Intermediate  | 72.08/2.24     |  **0.833**/0.806 | 0.760/ **0.750** | [url](https://drive.google.com/file/d/1mUEI_Dh4tkG6-LG3QcZ05kK7oOGJzCGK/view?usp=sharing)
-| [FPV-RCNN](https://arxiv.org/abs/2109.11615)   | 1.2.1       | PV-RCNN        | Intermediate(2 stage)  | 0.24/0.24    | 0.820/0.820     | 0.763/**0.763**    | [url](https://drive.google.com/file/d/1iOVi7holJ-Cu2P3dRv5HmOWlB5lkLukJ/view)     | 
-| [V2VAM](https://arxiv.org/pdf/2212.08273.pdf)  | 1.2.1       | PointPillar      | Intermediate  |  x/x     | **0.860**/**0.860**     | **0.813**/**0.791**   | [url](https://drive.google.com/drive/folders/1gFY6Aedrbi3vLJdPZ3x9abPnfW5w_HKN?usp=sharing)     |
-| [CoBEVT]( https://arxiv.org/pdf/2207.02202.pdf)  | 2.0       | PointPillar      | Intermediate  |  72.08/1.12     | **0.861**/**0.836**     | **0.773**/0.730   | [url](https://drive.google.com/drive/folders/1h5aawoH5l4cjWJBUSdQBVWd9B79nukWK?usp=share_link)     | 
-| Naive Late    | 1.2.1      | VoxelNet        | Late  | **0.024**/**0.024**    | 0.738/0.738          | 0.588/0.588        | [url]()    |
-| Cooper   | 1.2.1  | VoxelNet        | Early   |   7.68/7.68  | 0.758/x        | 0.677/x        | [url](https://drive.google.com/file/d/14WD7iLLyyCJJ3lApbYYdr5KOUM1ACnve/view?usp=sharing)     | 
-| Attentive Fusion    | 1.2.1     | VoxelNet        | Intermediate |   576.71/1.12   | **0.864**/**0.852**        | **0.775**/**0.746**       | [url](https://drive.google.com/file/d/16q8CfcB8dS4EVhJMvvEfn0gM2ynxZB3E/view?usp=sharing)      | 
-| Naive Late    | 1.2.1      | SECOND        | Late |  **0.024**/**0.024**    |  0.775/0.775        |0.682/0.682        | [url](https://drive.google.com/file/d/1VG_FKe1mKagPVGXH7UGHpyaM5q3cxtD8/view?usp=sharing)      |
-| Cooper  | 1.2.1   | SECOND        | Early  |   7.68/7.68   |  0.813/x       |  0.738/x     | [url](https://drive.google.com/file/d/1Z9io1VNcU-urcRW8l0ogWCTVCB53mw4N/view?usp=sharing)     | 
-| Attentive     | 1.2.1     | SECOND        | Intermediate |  63.4/0.99     |   **0.826**/**0.783**     | **0.760**/**0.760**    | [url](https://drive.google.com/file/d/1zEB8EyZ0X-WQykHFOM0pVwI8jXunRz1Z/view?usp=sharing)      | 
-| Naive Late    | 1.2.1      | PIXOR        | Late |    **0.024**/**0.024** |    0.578/0.578       |  0.360/0.360      | [url]()      |
-| Cooper | 1.2.1    | PIXOR        | Early |   7.68/7.68    |   0.678/x      | **0.558**/x      | [url](https://drive.google.com/file/d/1ZDLjtizZCuV6D92LloEPKRIw-LqxfE1j/view?usp=sharing)     | 
-| Attentive   | 1.2.1       | PIXOR        | Intermediate  |   313.75/1.22  |  **0.687**/**0.612**      | 0.546/**0.492**       | [url]()      |
-
-**Note**: 
-* We suggest using **PointPillar** as the backbone when you are creating your method and try to compare with
-our benchmark, as we implement most of the SOTA methods with this backbone only.
-* We assume the transimssion rate is 27Mbp/s. Considering the frequency of LiDAR is 10Hz, the 
-bandwidth requirement should be less than **2.7Mbp** to avoid severe delay. 
-* A 'x' in the benchmark table represents the bandwidth requirement is too large, which 
-can not be considered to employ in practice.
-
-
-### Results of BEV semantic segmentation on OPV2V camera-track (IoU)
-
-|                    | Backbone   | Fusion Strategy  | Vehicles| Road Surface   |Lane| Download |
-|--------------------| --------   | ---------------  | ---------------                | -------------    |-----------| -------- |
-| No Fusion        | CVT        | No Fusion      |    37.7 |   57.8        | 43.7     |    [None]()   |
-| Map Fusion      | CVT        | Late  |   45.1   |  60.0     | 44.1      | [None]()     | 
-| [Attentive Fusion](https://arxiv.org/abs/2109.07644)         | CVT        | Intermediate  | 51.9  |60.5       | 46.2        | [None]()     | 
-| [F-Cooper](https://arxiv.org/abs/1909.06459)         | CVT        | Intermediate  |52.5    | 60.4    | 46.5       | [None]()     | 
-| [V2VNet](https://arxiv.org/abs/2008.07519)         | CVT        | Intermediate  | 53.5     | 60.2     | 47.5   | [None]()     | 
-| [DiscoNet](https://arxiv.org/abs/2109.11615)         | CVT       | Intermediate  | 52.9   |  60.7   | 45.8    | [None]()     | 
-| [FuseBEVT](https://arxiv.org/pdf/2207.02202.pdf)        | CVT        | Intermediate  | 59.0     | 62.1        | 49.2      | [url]()    |
-| [CoBEVT](https://arxiv.org/pdf/2207.02202.pdf)        | SinBEVT        | Intermediate  | **60.4**     | **63.0**          | **53.0**      | [url](https://drive.google.com/drive/folders/1NLzyvMFxuv8Qy52q_OzcNsugTS5JacAT)    |
-
-**Note**: 
-To play with OPV2V camera data, please check here: https://github.com/DerrickXuNu/CoBEVT
-
-### Results of 3D Detection on V2XSet LiDAR-Track
-| Method       | Spconv Version | Backbone    | Perfect AP@0.5 | Perfect AP@0.7 | Noisy AP@0.5 | Noisy AP@0.7 | Download Link                                                            |
-|--------------|----------------|-------------|----------------|----------------|--------------|--------------|--------------------------------------------------------------------------|
-| No Fusion    |       2.0      | PointPillar | 60.6           | 40.2           | 60.6         | 40.2         |                                                                          |
-| Late Fusion  |       2.0      | PointPillar | 72.7           | 62.0           | 54.9         | 30.7         |                                                                          |
-| Early Fusion |       2.0      | PointPillar | 81.9           | 71.0           | 72.0         | 38.4         |                                                                          |
-| [F-Cooper](https://arxiv.org/abs/1909.06459) |       2.0      | PointPillar | 84.0           | 68.0           | 71.5         | 46.9         |                                                                          |
-| [Attentive Fusion](https://arxiv.org/abs/2109.07644)     |       2.0      | PointPillar | 80.7           | 66.4           | 70.9         | 48.7         |                                                                          |
-| [V2VNet](https://arxiv.org/abs/2008.07519)         |       2.0      | PointPillar | 84.5           | 67.7           | 79.1         | 49.3         |                                                                          |
-| [DiscoNet](https://arxiv.org/abs/2109.11615)      |       2.0      | PointPillar | 84.4           | 69.5           | 79.8         | 54.1         |                
-| [CoBEVT](https://arxiv.org/abs/2207.02202)      |       2.0      | PointPillar |    84.9      |  66.0   | 81.1   | 54.3  | [url](https://drive.google.com/file/d/1aNL2L779C5PBYIA5AjVWWNmld1tulens) ||
-| [Where2Comm](https://arxiv.org/abs/2209.12836)     |       2.0      | PointPillar |   85.5 | 65.4 | 82.0| 53.4 | [url](https://drive.google.com/file/d/1IAcnfLCSPIt9pyfiZcF1RnKOTkbIfUcJ/view?usp=share_link) ||
-| [V2X-ViT](https://arxiv.org/pdf/2203.10638.pdf)      |       2.0      | PointPillar | **88.2**           | **71.2**           | **83.6**         | **61.4**         | [url](https://drive.google.com/drive/folders/1h2UOPP2tNRkV_s6cbKcSfMvTgb8_ZFj9) |
-
-<strong>Important Notes for Training in V2XSet:</strong>
-1. When you train from scratch, please first set `async` and `loc_err` to false to train on perfect setting. Also, set `compression` to 0 at beginning.
-2. After the model on perfect setting converged, set `compression`  to 32 (please change the config yaml in your trained model directory) and continue training on the perfect setting for another 1-2 epoches.
-3. Next, set `async` to true, `async_mode` to 'real', `async_overhead` to 200 or 300, `loc_err` to true, `xyz_std` to 0.2, `rpy_std` to 0.2, and then continue training your model on this noisy setting. Please note that you are free to change these noise setting during training to obtain better performance.
-4. Eventually, use the model fine-tuned on noisy setting as the test model for both perfect and noisy setting.
-
-## Tutorials
-We have a series of tutorials to help you understand OpenCOOD more. Please check the series of our [tutorials](https://opencood.readthedocs.io/en/latest/md_files/config_tutorial.html).
-
-
-## Citation
+# Citation
  If you are using our OpenCOOD framework or OPV2V dataset for your research, please cite the following paper:
  ```bibtex
-@inproceedings{xu2022opencood,
-  author = {Runsheng Xu, Hao Xiang, Xin Xia, Xu Han, Jinlong Li, Jiaqi Ma},
-  title = {OPV2V: An Open Benchmark Dataset and Fusion Pipeline for Perception with Vehicle-to-Vehicle Communication},
-  booktitle = {2022 IEEE International Conference on Robotics and Automation (ICRA)},
-  year = {2022}}
+@inproceedings{feng2024u2udata,
+  author = {Tongtong Feng, Xin Wang, Feilin Han, Leping Zhang, Wenwu Zhu},
+  title = {U2UData: A Large-scale Cooperative Perception Dataset for Swarm UAVs Autonomous Flight},
+  booktitle = {2024 The 32nd ACM Multimedia Conference (ACM MM)},
+  year = {2024}
+  }
 ```
 
-## Supported Projects
-OpenCOOD has supported several top conference papers in cooperative perception field.
-
-**V2V4Real: A large-scale real-world dataset for Vehicle-to-Vehicle Cooperative Perception** <br>
- Runsheng Xu, Xin Xia, Jinlong Li, Hanzhao Li, Shuo Zhang, Zhengzhong Tu, Zonglin Meng, Hao Xiang, Xiaoyu Dong, Rui Song, Hongkai Yu, Bolei Zhou, Jiaqi Ma <br>
-*CVPR 2023* <br>
-[[Paper]]()[[Code]](https://github.com/ucla-mobility/V2V4Real)
+# Supported Projects
+U2U* has supported several top conference papers in cooperative perception field.
 
 **Robust Collaborative 3D Object Detection in Presence of Pose Errors** <br>
 Yifan Lu, Quanhao Li, Baoan Liu, Mehrdad Dianati, Chen Feng, Siheng Chen, Yanfeng Wang <br>
@@ -288,7 +206,6 @@ Yue Hu, Shaoheng Fang, Zixing Lei, Yiqi Zhong, Siheng Chen<br>
 Donghao Qiao, Farhana Zulkernine<br>
 *WACV 2023* <br>
 [[Paper]](https://arxiv.org/abs/2208.00116)
-
 
 **CoBEVT: Cooperative Bird's Eye View Semantic Segmentation with Sparse Transformers** <br>
 Runsheng Xu*, Zhengzhong Tu*, Hao Xiang, Wei Shao, Bolei Zhou, Jiaqi Ma <br>
