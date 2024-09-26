@@ -31,7 +31,6 @@ The simulator, config files, and control code can be downloaded from [google dri
 Compiling tests passed on Ubuntu 20.04 with ros-noetic installed. You can just execute the following commands one by one.
 ```shell
 # Download the Simulator and run it
-wget https://cloud.tsinghua.edu.cn/library/34e91522-1117-4021-874f-d40083dc90e0/Simulator/UAV_Bear_Simulator.zip
 uzip UAV_Bear_Simulator.zip
 cd ./UAV_Bear_Simulator
 mkdir ~/Documents/AirSim
@@ -41,8 +40,8 @@ cp settings.json ~/Documents/AirSim
 sudo apt-get install ros-noetic-desktop-full
 sudo apt-get install ros-noetic-geographic-msgs, ros-noetic-tf2-geometry-msgs, ros-noetic-tf2-sensor-msgs, ros-noetic-image-transport
 sudo apt-get install python3-catkin-tools
-git clone https://github.com/THU-Swarm-Lab/SwarmSim.git
-cd SwarmSim/UAV_Bear_Alg
+uzip UAV_Bear_Alg.zip
+cd ./UAV_Bear_Alg
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
 roslaunch kb_ctrl kb_ctrl.launch
