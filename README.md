@@ -27,25 +27,25 @@ Bottom right: Swarm UAVs cooperative perception benchmark.
 ### 1.1 Downloading
 The simulator, config files, and control code can be downloaded from [google drive](https://drive.google.com/drive/folders/1yc4Oe0E2Qn-1I1_G3gBgoww3LAf7iyLg). 
 > In case you suffer from downloading large files, you can email me and I will send you the Baidu Cloud link to download.
+> If you want to download the Windows version or the development version, please email me.
 ### 1.2 Quick Start
 Compiling tests passed on Ubuntu 20.04 with ros-noetic installed. You can just execute the following commands one by one.
+> For detailed operating instructions, please read the readme.md file carefully.
 ```shell
 # Download the Simulator and run it
-uzip UAV_Bear_Simulator.zip
-cd ./UAV_Bear_Simulator
+cd ./Linux_Fin
 mkdir ~/Documents/AirSim
 cp settings.json ~/Documents/AirSim
 ./Landscape.sh
-# Play UAV using a keyboard
+# Play UAV using a visual control interface
 sudo apt-get install ros-noetic-desktop-full
 sudo apt-get install ros-noetic-geographic-msgs, ros-noetic-tf2-geometry-msgs, ros-noetic-tf2-sensor-msgs, ros-noetic-image-transport
 sudo apt-get install python3-catkin-tools
-uzip UAV_Bear_Alg.zip
-cd ./UAV_Bear_Alg
-catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
-source devel/setup.bash
-roslaunch kb_ctrl kb_ctrl.launch
+cd ./AirDrone
+pip install PyQt5 keyboard numpy msgpack-rpc-python
+python AirDroneClient.py
 ```
+
 ### 1.3 Acknowledgements
 This U2USim can extend to multi-sensor fusion, swarm navigation, and swarm tracking tasks.
 - ros-noetic
