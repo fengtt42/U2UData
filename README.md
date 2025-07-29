@@ -8,7 +8,7 @@ If you find this work useful or interesting, please kindly give us a star ⭐, t
 [![Simulator: U2USim](https://img.shields.io/badge/Simulator-U2USim-blue)](https://huggingface.co/datasets/fengtt42/U2USim-2/tree/main) 
 [![Dataset: U2UData](https://img.shields.io/badge/Dataset-U2Udata-red)](https://huggingface.co/datasets/fengtt42/U2UData-2/tree/main)
 [![Benchmark: U2UData](https://img.shields.io/badge/Benchmark-U2Udata-yellow)](https://github.com/fengtt42/U2UData)
-[![U2Udata-2: AirDrone and U2USim-2](https://img.shields.io/badge/U2UData2-AirSim-blue)](https://huggingface.co/fengtt42/U2UData_2_Client)
+[![U2Udata-2: AirDrone and U2USim-2](https://img.shields.io/badge/U2UData2-AirDrone-blue)](https://huggingface.co/fengtt42/U2UData_2_Client)
 
 <strong>U2U*</strong> is a cooperative perception simlator, dataset and benchmark for swarm UAVs autonomous flight. It is also the official implementation of the <strong> ACM MM 2024  </strong>
 paper [U2UData.](https://fengtongtong.github.io/static/files/publications_file/2024-MM.pdf)
