@@ -26,7 +26,7 @@ Bottom right: Swarm UAVs cooperative perception benchmark.
 
 # Simulator
 ### 1.1 Downloading
-The simulator, config files, and control code can be downloaded from [google drive](https://drive.google.com/drive/folders/1yc4Oe0E2Qn-1I1_G3gBgoww3LAf7iyLg). 
+The simulator, config files, and control code can be downloaded from [Hugging_face](https://huggingface.co/datasets/fengtt42/U2USim-2/tree/main). 
 > In case you suffer from downloading large files, you can email me and I will send you the Baidu Cloud link to download.
 > If you want to download the Windows version or the development version, please email me.
 ### 1.2 Quick Start
@@ -56,7 +56,7 @@ This U2USim can extend to multi-sensor fusion, swarm navigation, and swarm track
 > More details can be found in our paper.
 
 # Dataset Downloading
-All the data can be downloaded from [google drive](https://drive.google.com/drive/folders/1yc4Oe0E2Qn-1I1_G3gBgoww3LAf7iyLg). If you have a good internet, you can directly
+All the data can be downloaded from [Hugging_face](https://huggingface.co/datasets/fengtt42/U2USim-2/tree/main). If you have a good internet, you can directly
 download the complete large zip file such as `train.zip`. In case you suffer from downloading large files, we also split each data set into small chunks, which can be found 
 in the directory ending with `_chunks`, such as `train_chunks`. After downloading, please run the following command to each set to merge those chunks together:
 ```python
